@@ -29,12 +29,10 @@ class Task:
 class ToDoList:
     def __init__(self):
         self.tasks = []
+        self.i = -1
 
     def __str__(self):
         return str(self.tasks)
-
-    def __getitem__(self, item):
-        return self.tasks[item]
 
     def __setitem__(self, key, value):
         self.tasks += (key >= len(self.tasks)) * [None] * (key - len(self.tasks) + 1)
@@ -42,3 +40,16 @@ class ToDoList:
 
     def __delitem__(self, key):
         del self.tasks[key]
+
+    def __iter__(self):
+        return self
+
+    def __len__(self):
+        return len(self.tasks)
+
+    def __next__(self):
+        if self.i + 1 < len(self.tasks):
+            self.i += 1
+            return self.tasks[self.i]
+        else:
+            raise StopIteration
