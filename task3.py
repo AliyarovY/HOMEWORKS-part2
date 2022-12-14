@@ -1,44 +1,21 @@
-import datetime
-
-
-class Task:
-    def __init__(self, content):
-        self.content = content
-        self.date = ' (coздано ' + str(datetime.datetime.now()).split('.')[0] + ')'
-
-    def __setattr__(self, key, value):
-        assert isinstance(value, str)
-        object.__setattr__(self, key, value)
-
-    def __hash__(self):
-        return hash(self.content)
-
-    def __eq__(self, other):
-        return hash(self.content) == hash(other.content)
-
-    def __str__(self):
-        return self.content + self.date
-
-    def __bool__(self):
-        return bool(self.content)
-
-    def __repr__(self):
-        return self.content + self.date
-
-
-class ToDoList:
-    def __init__(self):
-        self.tasks = []
-
-    def __str__(self):
-        return str(self.tasks)
+class MyList(list):
+    def __init__(self, *ar):
+        print('Работает магический метод __init__')
+        self.ls = ar[~0]
+        super().__init__(*ar)
 
     def __getitem__(self, item):
-        return self.tasks[item]
+        print('Работает магический метод __getitem__')
+        return self.ls[item]
 
     def __setitem__(self, key, value):
-        self.tasks += (key >= len(self.tasks)) * [None] * (key - len(self.tasks) + 1)
-        self.tasks[key] = value
+        print('Работает магический метод __setitem__')
+        super().__setitem__(key, value)
 
-    def __delitem__(self, key):
-        del self.tasks[key]
+    def __str__(self):
+        print('Работает магический метод __str__')
+        return super().__str__()
+
+    def __len__(self):
+        print('Работает магический метод __len__')
+        return super().__len__()
