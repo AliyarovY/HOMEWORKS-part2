@@ -1,21 +1,26 @@
-class MyList(list):
-    def __init__(self, *ar):
-        print('Работает магический метод __init__')
-        self.ls = ar[~0]
-        super().__init__(*ar)
+class Employee:
+    __slots__ = ('first', 'last')
 
-    def __getitem__(self, item):
-        print('Работает магический метод __getitem__')
-        return self.ls[item]
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
 
-    def __setitem__(self, key, value):
-        print('Работает магический метод __setitem__')
-        super().__setitem__(key, value)
+    @property
+    def fullname(self):
+        return f'{self.first} {self.last}'
 
-    def __str__(self):
-        print('Работает магический метод __str__')
-        return super().__str__()
+    @fullname.setter
+    def fullname(self, nn: str):
+        nn = nn.split()
+        self.first = nn[0]
+        self.last = nn[~0]
 
-    def __len__(self):
-        print('Работает магический метод __len__')
-        return super().__len__()
+    @fullname.deleter
+    def fullname(self):
+        self.first = None
+        self.last = None
+
+    email = property(lambda self: f'{self.first}.{self.last}@email.com')
+
+
+

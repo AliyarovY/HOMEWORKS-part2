@@ -1,11 +1,23 @@
-class Item:
-    def __init__(self, name, price, quantity=0):
-        assert self.__check(name, price, quantity), 'the type does not fit'
-        self.name = name
-        self.price = price
-        self.quantity = quantity
+class Vehicle:
 
-    __check = lambda self, name, price, quantity: \
-        [type(x) for x in (name, price, quantity)] == [str, int, int]
+    def __init__(self, position):
+        self.position = position
 
-    __str__ = lambda self: f'{self.__class__.__name__}({(self.name, self.price, self.quantity)})'
+    def travel(self, destination):
+        route = self.calculate_route(source=self.position, to=destination)
+        self.move_along(route)
+
+    @staticmethod
+    def calculate_route(source, to):
+        return 0  # to be realized
+
+    def move_along(self, route):
+        print("moving")
+
+
+class Car(Vehicle):
+    turn_on_radio = lambda self, x: print(x) if isinstance(x, str) else print('Type')
+
+
+class Airplane(Vehicle):
+    pass
