@@ -1,26 +1,17 @@
-class Employee:
-    __slots__ = ('first', 'last')
+class InvalidAgeError(Exception):
+    def __init__(self, msg):
+        self.m = msg
 
-    def __init__(self, first, last):
-        self.first = first
-        self.last = last
-
-    @property
-    def fullname(self):
-        return f'{self.first} {self.last}'
-
-    @fullname.setter
-    def fullname(self, nn: str):
-        nn = nn.split()
-        self.first = nn[0]
-        self.last = nn[~0]
-
-    @fullname.deleter
-    def fullname(self):
-        self.first = None
-        self.last = None
-
-    email = property(lambda self: f'{self.first}.{self.last}@email.com')
+    def __str__(self):
+        return "Извините, этот возраст не корректен"
 
 
-
+try:
+    age = int(input('Введите ваш возраст: '))
+    if age < 0 or age >= 120:
+        raise InvalidAgeError('Извините, этот возраст не корректен')
+    print(f'Вам {age} лет')
+except ValueError:
+    print('Возраст должен быть числом')
+except InvalidAgeError as e:
+    print(e)
