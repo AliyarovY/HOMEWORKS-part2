@@ -1,17 +1,21 @@
-class InvalidAgeError(Exception):
-    def __init__(self, msg):
-        self.m = msg
-
-    def __str__(self):
-        return "Извините, этот возраст не корректен"
+from dataclasses import dataclass
 
 
-try:
-    age = int(input('Введите ваш возраст: '))
-    if age < 0 or age >= 120:
-        raise InvalidAgeError('Извините, этот возраст не корректен')
-    print(f'Вам {age} лет')
-except ValueError:
-    print('Возраст должен быть числом')
-except InvalidAgeError as e:
-    print(e)
+@dataclass
+class Student:
+    name: str
+    stud_id: int
+
+    def __post_init__(self):
+        self.lap = self.Laptop()
+
+    def show(self):
+        print(*(self.name, self.stud_id))
+        dc = self.lap.__dict__
+        print(*[dc[k] for k in dc if k in 'brand cpu ram'.split()])
+
+    @dataclass
+    class Laptop:
+        brand: str = 'HP'
+        cpu: str = 'i5'
+        ram: int = 8

@@ -1,14 +1,21 @@
-from time import time
+from dataclasses import dataclass
 
 
-def read_file_timed(file):
-    start_time = time()
-    try:
-        ff = open(file, mode='rb')
-    except FileNotFoundError:
-        raise FileNotFoundError
-    else:
-        return ff
-    finally:
-        print(f'Time required for {file} = {time() - start_time}')
-        ff.close()
+@dataclass
+class ReadItems:
+    file: str
+    mode: str
+
+    def __enter__(self):
+        res = []
+        with open(self.file, self.mode) as ff:
+            for i, j in enumerate(ff):
+                j = j.replace('\n', '').split(',')
+                if not i:
+                    keys = j
+                    continue
+                res.append(dict(zip(keys, j)))
+        return res
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
