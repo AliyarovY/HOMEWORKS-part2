@@ -1,2 +1,12 @@
-psql -U postgres
-create database north;
+SELECT contact_name , country
+FROM customers
+
+SELECT order_date-shipped_date
+FROM orders
+
+SELECT DISTINCT city
+FROM customers
+
+SELECT COUNT(ship_country)
+FROM orders
+
