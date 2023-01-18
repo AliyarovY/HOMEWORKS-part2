@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Title</title></head>
+<body>
+<form method="POST" action="" id="comments" class="ajax" enctype="multipart/form-data"> {% csrf_token %} <input
+        type="hidden" name="module" value="comments"> <input type="hidden" name="action" value="add"> <input
+        type="hidden" name="form_tag" value="comments0"> <input type="hidden" name="parent_id" value="0"> <input
+        type="hidden" name="element_id" value="92"> <input type="hidden" name="module_name" value="clauses"> <input
+        type="hidden" name="element_type" value="element"> <input type="hidden" name="tmpcode"
+                                                                  value="ebe4bab9796d8591e73101a9b2cf6296">
+    <div class="block_header">Оставьте комментарий</div>
+    <textarea name="comment" placeholder="Ваш комментарий"></textarea>
+    <div class="errors error" style="display:none"></div>
+    <div class="comments_form_param1"><input type="text" name="p1" placeholder="Имя" value=""></div>
+    <div class="errors error_p1" style="display:none"></div>
+    <input name="mail" type="email" placeholder="Подписаться на комментарии (Email)" value="">
+    <div class="errors error_mail" style="display:none"></div>
+    <br><input type="submit" value="Отправить" class="button solid site_btn">
+    <div class="privat_policy_info">Отправляя форму, я даю согласие на <a href="https://guruweba.com/privacy/">обработку
+        персональных данных</a>.
+    </div>
+</form>
+</body>
+</html>
