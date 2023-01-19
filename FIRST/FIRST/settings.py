@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'home',
     'catalog',
     'feedbck',
+    'contacts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -38,11 +38,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\contacts" />
+      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\home\templates\home" />
+      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\home\templates" />
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\catalog" />
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\feedbck" />
-      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\feedbck\templates" />
-      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\feedb" />
-      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\feedback\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Python.fill">
@@ -154,7 +154,8 @@
       <workItem from="1674006436843" duration="4683000" />
       <workItem from="1674046645149" duration="11257000" />
       <workItem from="1674060673345" duration="6872000" />
-      <workItem from="1674081546772" duration="8056000" />
+      <workItem from="1674081546772" duration="8529000" />
+      <workItem from="1674153025747" duration="4140000" />
     </task>
     <servers />
   </component>
