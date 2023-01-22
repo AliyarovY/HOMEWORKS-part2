@@ -1,0 +1,22 @@
+{% extends 'blog/index.html' %}
+
+{% block title %} read {% endblock %}
+
+{% block content %}
+
+    {% for x in object_list %}
+
+        <h1>{{x.title}}</h1>
+        <p>views :  {{x.views_count}}</p>
+        <p>{{x.content}}</p>
+        <image src="/media/{{x.image}}" width=500 height="300"></image><br>
+    <a href="{% url 'blog:read' x.slug %}", class=btn btn-info">READ</a>
+    <a href="{% url 'blog:delete' x.slug %}" class=btn btn-info">DELETE</a>
+    <a href="{% url 'blog:update' x.slug %}" class=btn btn-info">UPDATE</a>
+    <br><br><br><br><br>
+
+
+
+    {% endfor %}
+
+{% endblock content %}

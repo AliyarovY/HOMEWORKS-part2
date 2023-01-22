@@ -13,8 +13,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home',
     'catalog',
-    'feedbck',
     'contacts',
+    'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +56,7 @@ WSGI_APPLICATION = 'FIRST.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'frst',
+        'NAME': 'FIRST',
         'HOST': 'localhost',
         'PORT': 5432,
         'USER': 'postgres',

@@ -1,0 +1,16 @@
+{% extends 'blog/index.html' %}
+{% block title %} read {% endblock %}
+
+
+{%  block content %}
+
+<h1>{{object.title}}</h1>
+<p>{{object.content}}</p>
+<p>{{object.views_count}}</p>
+<image src="/media/{{object.image}}" width=500 height="300"></image><br>
+<a href="{% url 'blog:read' object.slug %}" class="btn btn-danger">DELETE</a>
+<br><br><br><br><br>
+
+{% endblock content %}
+
+

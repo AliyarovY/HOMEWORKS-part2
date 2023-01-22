@@ -8,11 +8,11 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('feedbck', include('feedbck.urls')),
     path('admin/', admin.site.urls),
     path('catalog', include(('catalog.urls', 'cat'), namespace='cat')),
     path('contacts', include(('contacts.urls', 'cc'), namespace='cc')),
-    path('', include('home.urls'))
+    path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
+    path('', include(('home.urls', 'home'), namespace='home')),
 ]
 
 if settings.DEBUG:
