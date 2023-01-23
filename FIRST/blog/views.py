@@ -22,7 +22,7 @@ class Update(UpdateView):
     model = BlogMain
     slug_url_kwarg = 'slug'
     fields = tuple('title content image is_public'.split())
-    template_name = 'blog/delete.html'
+    template_name = 'blog/update.html'
 
 
 
@@ -40,7 +40,7 @@ class Update(UpdateView):
 class Delete(DeleteView):
     model = BlogMain
     slug_url_kwarg = 'slug'
-    template_name = 'blog/update.html'
+    template_name = 'blog/delete.html'
     success_url = reverse_lazy('blog:main')
 
 
