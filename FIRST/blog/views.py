@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import *
 
 from .models import *
@@ -23,7 +23,18 @@ class Update(UpdateView):
     slug_url_kwarg = 'slug'
     fields = tuple('title content image is_public'.split())
     template_name = 'blog/delete.html'
-    success_url = reverse_lazy('blog:read', kwargs={'slug': slug})
+
+
+
+# def Update(request, slug):
+#     object = BlogMain.objects.all()
+#     url_suc = reverse_lazy('blog:read', kwargs={'slug': slug})
+#     tmp = 'blog/delete.html'
+#     contest = {
+#         'object': object,
+#         'success_url': url_suc,
+#
+#     }
 
 
 class Delete(DeleteView):
@@ -40,6 +51,7 @@ class Delete(DeleteView):
 def Read(request, slug):
     obj = get_object_or_404(BlogMain, slug=slug)
     obj.views_count += 1
+    obj.save()
     cont = dict(object=obj)
     return render(request, 'blog/read.html', cont)
 

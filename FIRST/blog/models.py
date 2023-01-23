@@ -1,5 +1,6 @@
 from django.db import models
 from autoslug import AutoSlugField
+from django.urls import reverse
 
 
 class BlogMain(models.Model):
@@ -15,6 +16,9 @@ class BlogMain(models.Model):
     class Meta:
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
+
+    def get_absolute_url(self):
+        return reverse('blog:read', kwargs={'slug': self.slug})
 
 
     def __str__(self):
