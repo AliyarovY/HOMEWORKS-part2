@@ -26,6 +26,7 @@ class VersionCreate(CreateView):
     form_class = VersionForm
     template_name = 'catalog/version_form.html'
 
+
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
 
@@ -40,3 +41,14 @@ class VersionCreate(CreateView):
         return context_data
 
 
+    def form_valid(self, form):
+        context_data = self.get_context_data()
+        formset = context_data['formset']
+        with transaction.atomic():
+            if form.is_valid():
+                self.object = form.save()
+                if formset.is_valid():
+                    formset.instance = self.object
+                    formset.save()
+
+        return super().form_valid(form)
