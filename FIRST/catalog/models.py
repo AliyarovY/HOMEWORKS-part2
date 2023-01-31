@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 NULLABLE = dict(blank=True, null=True)
@@ -18,3 +19,22 @@ class Product(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование', primary_key=True)
     description = models.TextField(verbose_name='Описание')
+
+
+active_versions = set()
+
+
+class Version(models.Model):
+    product = models.OneToOneField('Product', on_delete=models.CASCADE)
+    number = models.IntegerField()
+    release_notes = models.CharField(max_length=255)
+    sign = models.BooleanField(default=True)
+
+
+    def save(self, *args, **kwargs):
+        if self.product in active_versions:
+            raise ValidationError('product have active version')
+        if self.sign:
+            active_versions.add(self.product)
+
+        return super().save(*args, **kwargs)

@@ -1,0 +1,19 @@
+{%load fl%}
+{% if products %}
+  {% for el in products %}
+    <div class="product-item">
+      <img src={% mediapath el.image %}>
+      <div class="product-list">
+        <h2>{{ el.name }}</h2>
+        <h3>{{el.category}}</h3>
+          <h4>{{el.description}}</h4>
+          <h5>{{el.creation_date}}</h5>
+          <h5>{{el.date_last_modified}}</h5>
+          <h4>{{el.created_at}}</h4>
+          <span class="price">{{el.price}}</span>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>У нас нет записей</p>
+{% endif %}

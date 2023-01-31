@@ -1,6 +1,7 @@
-from django.views.generic.list import ListView
-
-from .models import Product
+from django.forms import *
+from django.views.generic import ListView, CreateView
+from .forms import *
+from .models import *
 from django.db import models
 
 
@@ -18,3 +19,24 @@ class Index(ListView):
                 j.description = j.description[:101]
             products.append(j)
         return products
+
+
+class VersionCreate(CreateView):
+    model = Version
+    form_class = VersionForm
+    template_name = 'catalog/version_form.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+
+        Formset = inlineformset_factory(Product, self.model, form=VersionForm, extra=1)
+
+        if self.request.method == 'POST':
+            formset = Formset(self.request.POST, instance=self.object)
+        else:
+            formset = Formset(instance=self.object)
+
+        context_data['formset'] = formset
+        return context_data
+
+

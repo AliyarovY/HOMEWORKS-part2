@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -44,11 +44,11 @@
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\catalog\templates\catalog" />
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\blog" />
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\blog\templates" />
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\catalog" />
       <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST\templates" />
-      <recent name="C:\Users\User\PycharmProjects\DJANGO\FIRST" />
     </key>
   </component>
   <component name="RunManager" selected="Python.urls">
@@ -176,7 +176,11 @@
       <workItem from="1674443794367" duration="6000" />
       <workItem from="1674444304833" duration="69000" />
       <workItem from="1674461916309" duration="1004000" />
-      <workItem from="1674472243298" duration="358000" />
+      <workItem from="1674472243298" duration="751000" />
+      <workItem from="1674507345255" duration="25000" />
+      <workItem from="1674539867106" duration="100000" />
+      <workItem from="1675092103267" duration="741000" />
+      <workItem from="1675126314908" duration="8338000" />
     </task>
     <servers />
   </component>
