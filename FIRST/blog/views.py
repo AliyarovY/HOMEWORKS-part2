@@ -25,7 +25,6 @@ class Update(UpdateView):
     template_name = 'blog/update.html'
 
 
-
 # def Update(request, slug):
 #     object = BlogMain.objects.all()
 #     url_suc = reverse_lazy('blog:read', kwargs={'slug': slug})

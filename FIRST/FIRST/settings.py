@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,10 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'home',
     'catalog',
     'contacts',
     'blog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -91,10 +95,22 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/var/www/static/',
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
+LOGIN_REDIRECT_URL = reverse_lazy('home:main')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'addda2778@gmail.com'
+EMAIL_HOST_PASSWORD = 'avfegpsgqrfybrwq'
+EMAIL_USE_SSL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+CODE = ''

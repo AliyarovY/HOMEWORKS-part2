@@ -13,6 +13,12 @@
         <a class="p-2 btn btn-outline-primary" href="{% url 'cat:catalog' %}">Каталог</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'cc:cnt' %}">Контакты</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'blog:main' %}">Блог</a>
+        {% if user.is_authenticated %}
+        <a class="p-2 btn btn-outline-primary" href="{% url 'user:logout' %}">Выйти</a>
+        {% else %}
+        <a class="p-2 btn btn-outline-primary" href="{% url 'user:login' %}">Войти</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'user:registration' %}">Регистрация</a>
+        {% endif %}
     </nav>
 </div>
 
