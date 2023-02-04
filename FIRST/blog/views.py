@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import *
@@ -24,6 +25,13 @@ class Update(UpdateView):
     fields = tuple('title content image is_public'.split())
     template_name = 'blog/update.html'
 
+
+    def form_valid(self, form):
+        if kwargs['instance']._user != self.request.user:
+            raise Http404()
+
+        form.save()
+        return super(form_valid, self).form_valid(form)
 
 # def Update(request, slug):
 #     object = BlogMain.objects.all()
