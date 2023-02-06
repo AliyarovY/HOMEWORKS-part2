@@ -2,9 +2,13 @@ import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
+from dotenv import load_dotenv
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env_path = BASE_DIR / '.env'
+load_dotenv(dotenv_path=env_path)
 
 SECRET_KEY = 'django-insecure-6d#c&@!)6^vk6bst(gdw!4-_4*0a2hc!do@7y9+!o499j7*_&)'
 
@@ -108,9 +112,19 @@ AUTH_USER_MODEL = 'users.User'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'addda2778@gmail.com'
-EMAIL_HOST_PASSWORD = 'avfegpsgqrfybrwq'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CODE = ''
+
+CACHE_ENABLED = os.getenv('CACHED_ENABLED')
+
+if CACHE_ENABLED:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379'
+        }
+    }
